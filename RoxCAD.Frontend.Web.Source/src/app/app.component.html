@@ -1,0 +1,13 @@
+<router-outlet *ngIf="this.payloadValid()" />
+
+<section *ngIf="!this.payloadValid()" class="hero is-danger is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title mb-4">Error</p>
+      <p class="subtitle">
+        The RoxCAD Website must be run on the official RoxCAD Server due to the advanced technical nature of this system.<br />
+        If you need help setting up RoxCAD, Please read the <a href="https://docs.roxstarstudios.dev/" target="_blank">Docs</a>!
+      </p>
+    </div>
+  </div>
+</section>

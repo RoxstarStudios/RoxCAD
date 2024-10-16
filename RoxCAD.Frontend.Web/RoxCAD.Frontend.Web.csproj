@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>../RoxCAD.Build/</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="www\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="www\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RoxCAD.Shared\RoxCAD.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

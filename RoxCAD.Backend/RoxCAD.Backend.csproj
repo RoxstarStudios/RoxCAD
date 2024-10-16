@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <BaseOutputPath>../RoxCAD.Build/</BaseOutputPath>
+    <ApplicationIcon>RoxstarStudiosLogo_1.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="RoxstarStudiosLogo_1.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Colors.Net" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RoxCAD.Backend.API\RoxCAD.Backend.API.csproj" />
+    <ProjectReference Include="..\RoxCAD.Backend.WS\RoxCAD.Backend.WS.csproj" />
+    <ProjectReference Include="..\RoxCAD.Frontend.Web\RoxCAD.Frontend.Web.csproj" />
+    <ProjectReference Include="..\RoxCAD.Shared\RoxCAD.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
