@@ -13,9 +13,7 @@ namespace RoxCAD.Backend
 {
     internal class Program
     {
-        public static int BackendApiPort = 6071;
-        public static int BackendWSPort = 6072;
-        public static int FrontendWebPort = 6073;
+        public static int ServicePort = 6071;
 
         [STAThread]
         static void Main(string[] args)
@@ -24,35 +22,23 @@ namespace RoxCAD.Backend
             Application.SetCompatibleTextRenderingDefault(false);
             Logger.UnregisterLogger<ConsoleLogger>();
 
-            SetPortsDialog.BackendApiPort = BackendApiPort;
-            SetPortsDialog.BackendWSPort = BackendWSPort;
-            SetPortsDialog.FrontendWebPort = FrontendWebPort;
+            ServicePort = SavedPortStore.LoadSavedPort();
 
-            SetPortsDialog portsDialog = new SetPortsDialog();
+            SetPortsDialog.ServicePort = ServicePort;
+
+            SetPortsDialog portsDialog = new();
 
             var portsDialogResult = portsDialog.ShowDialog();
 
             if (portsDialogResult == DialogResult.OK)
             {
-                BackendApiPort = SetPortsDialog.BackendApiPort;
-                BackendWSPort = SetPortsDialog.BackendWSPort;
-                FrontendWebPort = SetPortsDialog.FrontendWebPort;
+                ServicePort = SetPortsDialog.ServicePort;
             }
-
-            PayloadData.SetPayloadData(new Dictionary<string, string>
-            {
-                {
-                    "api_url", $"http://localhost:{BackendApiPort}/"
-                },
-                {
-                    "ws_url", $"http://localhost:{BackendWSPort}/"
-                }
-            });
 
             ColoredConsole.WriteLine(Red($@"Starting {"RoxCAD".DarkMagenta()} Servers")).WriteLine();
 
-            var apiServer = new ApiServer(BackendApiPort);
-            var wsServer = new WsServer(BackendWSPort);
+            ApiServer apiServer = new(ServicePort);
+            WsServer wsServer = new(ServicePort);
 
             var apiTask = apiServer.StartAsync();
             var wsTask = wsServer.StartAsync();
@@ -60,19 +46,31 @@ namespace RoxCAD.Backend
             if (apiTask.Success == false && wsTask.Success == false) return;
 
             ColoredConsole.WriteLine(Magenta($@"Backend Data Servers Running"))
-            .WriteLine(Gray($@"Backend Interface (API) Server: {$"http://localhost:{apiTask.Port}/".Blue()}"))
-            .WriteLine(Gray($@"Backend WebSocket (WS) Server: {$"http://localhost:{wsTask.Port}/".Blue()}")).WriteLine();
+            .WriteLine(Gray($@"Backend Interface (API) Server: {$"{apiTask.HostUrl}".Blue()}"))
+            .WriteLine(Gray($@"Backend WebSocket (WS) Server: {$"{wsTask.HostUrl}".Blue()}")).WriteLine();
 
-            var webServer = new WebServerApp(FrontendWebPort);
+            PayloadData.SetPayloadData(new Dictionary<string, string>
+            {
+                {
+                    "api_url", $"{apiTask.HostUrl}"
+                },
+                {
+                    "ws_url", $"{wsTask.HostUrl}"
+                }
+            });
+
+            WebServerApp webServer = new(ServicePort);
 
             var webTask = webServer.StartAsync();
 
             if (webTask.Success == false) return;
 
             ColoredConsole.WriteLine(Magenta($@"Frontend Web Server Running"))
-            .WriteLine(Gray($@"Frontend Website (App) Server: {$"http://localhost:{webTask.Port}/".Blue()}")).WriteLine();
+            .WriteLine(Gray($@"Frontend Website (App) Server: {$"{webTask.HostUrl}".Blue()}")).WriteLine();
 
             ColoredConsole.WriteLine(DarkGreen($@"Started {"RoxCAD".DarkMagenta()} Servers")).WriteLine();
+
+            SavedPortStore.SavePort(ServicePort);
 
             ColoredConsole.WriteLine(Gray($@"Press {"Enter".DarkGray()} to stop {"RoxCAD".DarkMagenta()} Servers"));
 

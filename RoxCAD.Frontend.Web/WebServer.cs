@@ -1,6 +1,7 @@
 ﻿using EmbedIO;
 using EmbedIO.Files;
 
+using RoxCAD.Frontend.Web.WebServerModules;
 using RoxCAD.Shared;
 
 namespace RoxCAD.Frontend.Web
@@ -13,9 +14,10 @@ namespace RoxCAD.Frontend.Web
         public WebServerApp(int port)
         {
             _port = port;
-            _server = new WebServer(o => o.WithUrlPrefix($"http://localhost:{_port}").WithMode(HttpListenerMode.EmbedIO))
+            _server = new WebServer(o => o.WithUrlPrefix($"http://*:{_port}/").WithMode(HttpListenerMode.EmbedIO))
+                .WithCors("*")
                 .WithModule(new CustomInjectModule())
-                .WithModule(new FileModule("/", new FileSystemProvider("www/", true)))
+                .WithModule(new AngularRoutingModule(Path.Combine("www", "index.html")))
                 .WithLocalSessionManager();
         }
 
@@ -28,7 +30,7 @@ namespace RoxCAD.Frontend.Web
                 return new ServerTaskResult
                 {
                     Success = true,
-                    Port = _port
+                    HostUrl = _server.Options.UrlPrefixes[0].Replace("*", "127.0.0.1")
                 };
             }
             catch (Exception ex)
@@ -38,7 +40,6 @@ namespace RoxCAD.Frontend.Web
                 return new ServerTaskResult
                 {
                     Success = false,
-                    Port = _port
                 };
             }
         }

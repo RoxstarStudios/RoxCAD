@@ -14,8 +14,9 @@ namespace RoxCAD.Backend.WS
         public WsServer(int port)
         {
             _port = port;
-            _server = new WebServer($"http://localhost:{_port}")
-                .WithModule(new ActionModule("/", HttpVerbs.Any, ctx => ctx.SendStringAsync("Hello from WS Server!", "text/plain", System.Text.Encoding.UTF8)));
+            _server = new WebServer(o => o.WithUrlPrefix($"http://*:{_port}/ws/").WithMode(HttpListenerMode.EmbedIO))
+                .WithCors("*")
+                .WithModule(new ActionModule("/ws", HttpVerbs.Any, ctx => ctx.SendStringAsync("Hello from WS Server!", "text/plain", System.Text.Encoding.UTF8)));
         }
 
         public ServerTaskResult StartAsync()
@@ -27,7 +28,7 @@ namespace RoxCAD.Backend.WS
                 return new ServerTaskResult
                 {
                     Success = true,
-                    Port = _port
+                    HostUrl = _server.Options.UrlPrefixes[0].Replace("*", "127.0.0.1")
                 };
             }
             catch (Exception ex)
@@ -37,7 +38,6 @@ namespace RoxCAD.Backend.WS
                 return new ServerTaskResult
                 {
                     Success = false,
-                    Port = _port
                 };
             }
         }

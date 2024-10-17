@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="1s0qzpwh.b1n~" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="RoxstarStudiosLogo_1.ico" />
   </ItemGroup>
 

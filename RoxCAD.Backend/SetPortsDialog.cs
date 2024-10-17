@@ -12,9 +12,7 @@ namespace RoxCAD.Backend
 {
     public partial class SetPortsDialog : Form
     {
-        public static int BackendApiPort;
-        public static int BackendWSPort;
-        public static int FrontendWebPort;
+        public static int ServicePort;
 
         public SetPortsDialog()
         {
@@ -23,16 +21,12 @@ namespace RoxCAD.Backend
 
         private void SetPortsDialog_Load(object sender, EventArgs e)
         {
-            backendApiPortInput.Text = BackendApiPort.ToString();
-            backendWSPortInput.Text = BackendWSPort.ToString();
-            frontendWebPortInput.Text = FrontendWebPort.ToString();
+            servicePortInput.Text = ServicePort.ToString();
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            BackendApiPort = int.Parse(backendApiPortInput.Text);
-            BackendWSPort = int.Parse(backendWSPortInput.Text);
-            FrontendWebPort = int.Parse(frontendWebPortInput.Text);
+            ServicePort = int.Parse(servicePortInput.Text);
 
             this.Close();
         }

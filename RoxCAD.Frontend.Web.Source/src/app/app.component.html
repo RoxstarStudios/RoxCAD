@@ -1,6 +1,12 @@
-<router-outlet *ngIf="this.payloadValid()" />
+<section class="hero is-fullheight" *ngIf="!this.pageLoaded()">
+  <div class="hero-body">
+    <div class="is-flex container has-text-centered is-justify-content-center">
+      <p class="title"><span class="loader has-text-centered"></span></p>
+    </div>
+  </div>
+</section>
 
-<section *ngIf="!this.payloadValid()" class="hero is-danger is-fullheight">
+<section *ngIf="this.pageLoaded() && !this.payloadValid()" class="hero is-danger is-fullheight">
   <div class="hero-body">
     <div class="container has-text-centered">
       <p class="title mb-4">Error</p>
@@ -11,3 +17,5 @@
     </div>
   </div>
 </section>
+
+<router-outlet *ngIf="this.pageLoaded() && this.payloadValid()" />

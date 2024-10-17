@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AxiosService } from './services/axios.service';
 import { CommonModule } from '@angular/common';
+
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,11 @@ import { CommonModule } from '@angular/common';
 export class AppComponent implements OnInit {
   constructor(private axiosService: AxiosService) { }
 
-  public payloadValid = signal(true);
+  pageLoaded = signal(false);
 
-  ngOnInit() {
+  payloadValid = environment.production ? signal(false) : signal(true);
+
+  ngOnInit(): void {
     this.axiosService.get("/").then((res) => {
       const payloadHeader = res.headers["x-roxcad-payload"];
 
@@ -25,7 +28,7 @@ export class AppComponent implements OnInit {
           const parsedPayload = JSON.parse(payloadHeader);
 
           if (Object.keys(parsedPayload).every((key) => typeof key === "string" && typeof parsedPayload[key] === "string")) {
-            console.log("Valid Payload Header:", parsedPayload);
+            console.log("Valid Payload Header");
             this.payloadValid.set(true);
           } else {
             console.log("Invalid Payload Format");
@@ -37,8 +40,10 @@ export class AppComponent implements OnInit {
         }
       } else {
         console.log("No Payload Header.");
-        this.payloadValid.set(false);
+        this.payloadValid.set(environment.production ? false : true);
       }
+    }).then(() => {
+      this.pageLoaded.set(true);
     });
   }
 }

@@ -14,7 +14,21 @@ public class CustomInjectModule : WebModuleBase
 
     protected override async Task OnRequestAsync(IHttpContext context)
     {
-        var payloadData = PayloadData.GetPayloadData();
-        context.Response.Headers.Add("X-RoxCAD-Payload", System.Text.Json.JsonSerializer.Serialize(payloadData));
+        var path = context.RequestedPath;
+
+        await Task.Delay(0);
+
+        if (path == "/api" || path == "/ws")
+        {
+            var redirectUrl = path + "/";
+            context.Response.StatusCode = 301;
+            context.Response.Headers["Location"] = redirectUrl;
+            context.SetHandled();
+        }
+        else
+        {
+            var payloadData = PayloadData.GetPayloadData();
+            context.Response.Headers.Add("X-RoxCAD-Payload", System.Text.Json.JsonSerializer.Serialize(payloadData));
+        }
     }
 }

@@ -5,7 +5,12 @@ import { HomeComponent } from './views/home/home.component';
 export const routes: Routes = [
     {
         path: "",
-        title: "",
+        title: "Home - RoxCAD",
         component: HomeComponent
+    },
+    {
+        path: "**",
+        redirectTo: "/",
+        pathMatch: 'full'
     }
 ];
