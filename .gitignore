@@ -1,0 +1,11 @@
+
+/.vs
+/RoxCAD.Backend.API/obj
+/RoxCAD.Backend.DB/obj
+/RoxCAD.Backend.WS/obj
+/RoxCAD.Backend/obj
+/RoxCAD.Build
+RoxCAD.Frontend.Web.Source/.editorconfig
+RoxCAD.Frontend.Web.Source/README.md
+/RoxCAD.Shared/obj
+/RoxCAD.Frontend.Web/obj

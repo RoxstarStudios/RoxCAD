@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoxCAD.Backend", "RoxCAD.Backend\RoxCAD.Backend.csproj", "{63A7DC98-C825-48D0-B24C-5D8626DF8B41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoxCAD.Backend.API", "RoxCAD.Backend.API\RoxCAD.Backend.API.csproj", "{ACFDD2E8-BEEF-4A3B-B21B-F6267157CC55}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoxCAD.Backend.WS", "RoxCAD.Backend.WS\RoxCAD.Backend.WS.csproj", "{20469868-A69E-4C14-A2FD-1AD547AB1052}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoxCAD.Frontend.Web", "RoxCAD.Frontend.Web\RoxCAD.Frontend.Web.csproj", "{10A2210B-1677-4A56-9185-C127F4A1F86B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoxCAD.Shared", "RoxCAD.Shared\RoxCAD.Shared.csproj", "{FAA918C6-C0A5-4925-AA37-1C372224D57D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoxCAD.Backend.DB", "RoxCAD.Backend.DB\RoxCAD.Backend.DB.csproj", "{2AA94845-B705-45A4-8D9F-B494E5926582}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63A7DC98-C825-48D0-B24C-5D8626DF8B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A7DC98-C825-48D0-B24C-5D8626DF8B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A7DC98-C825-48D0-B24C-5D8626DF8B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A7DC98-C825-48D0-B24C-5D8626DF8B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFDD2E8-BEEF-4A3B-B21B-F6267157CC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFDD2E8-BEEF-4A3B-B21B-F6267157CC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFDD2E8-BEEF-4A3B-B21B-F6267157CC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFDD2E8-BEEF-4A3B-B21B-F6267157CC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20469868-A69E-4C14-A2FD-1AD547AB1052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20469868-A69E-4C14-A2FD-1AD547AB1052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20469868-A69E-4C14-A2FD-1AD547AB1052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20469868-A69E-4C14-A2FD-1AD547AB1052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A2210B-1677-4A56-9185-C127F4A1F86B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A2210B-1677-4A56-9185-C127F4A1F86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A2210B-1677-4A56-9185-C127F4A1F86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A2210B-1677-4A56-9185-C127F4A1F86B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA918C6-C0A5-4925-AA37-1C372224D57D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA918C6-C0A5-4925-AA37-1C372224D57D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA918C6-C0A5-4925-AA37-1C372224D57D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA918C6-C0A5-4925-AA37-1C372224D57D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA94845-B705-45A4-8D9F-B494E5926582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA94845-B705-45A4-8D9F-B494E5926582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA94845-B705-45A4-8D9F-B494E5926582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA94845-B705-45A4-8D9F-B494E5926582}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF2CADBC-CF17-41B1-B7E8-9CF8A7ABE25B}
+	EndGlobalSection
+EndGlobal
