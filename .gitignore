@@ -9,3 +9,4 @@ RoxCAD.Frontend.Web.Source/.editorconfig
 RoxCAD.Frontend.Web.Source/README.md
 /RoxCAD.Shared/obj
 /RoxCAD.Frontend.Web/obj
+/RoxCAD.Backend/Certificates

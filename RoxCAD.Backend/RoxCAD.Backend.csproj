@@ -11,10 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="1s0qzpwh.b1n~" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Content Include="Certificates\*.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="RoxstarStudiosLogo_1.ico" />
   </ItemGroup>
 
@@ -24,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RoxCAD.Backend.API\RoxCAD.Backend.API.csproj" />
+    <ProjectReference Include="..\RoxCAD.Backend.DB\RoxCAD.Backend.DB.csproj" />
     <ProjectReference Include="..\RoxCAD.Backend.WS\RoxCAD.Backend.WS.csproj" />
     <ProjectReference Include="..\RoxCAD.Frontend.Web\RoxCAD.Frontend.Web.csproj" />
     <ProjectReference Include="..\RoxCAD.Shared\RoxCAD.Shared.csproj" />
