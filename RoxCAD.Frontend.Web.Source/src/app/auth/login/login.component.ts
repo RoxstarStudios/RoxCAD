@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [NavbarComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

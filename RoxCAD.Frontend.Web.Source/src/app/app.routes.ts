@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { authRoutes } from './auth/auth.routes';
+import { mdtRoutes } from './mdt/mdt.routes';
 
 export const appRoutes: Routes = [
     {
@@ -18,6 +19,10 @@ export const appRoutes: Routes = [
     {
         path: "auth",
         children: authRoutes
+    },
+    {
+        path: "mdt",
+        children: mdtRoutes
     },
     {
         path: "**",

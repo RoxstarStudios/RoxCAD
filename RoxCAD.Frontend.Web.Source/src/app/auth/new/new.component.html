@@ -1,85 +1,109 @@
 <div class="page">
-    <app-navbar currentPage="auth-new" />
+  <app-navbar currentPage="auth-new" />
 
-    <section class="hero is-fullheight-with-navbar">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">New Account</p>
+  <section class="hero is-fullheight-with-navbar">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <p class="title">New Account</p>
 
-                <div class="container is-max-tablet">
-                    <form class="box is-shadowless has-background-dark has-text-left" method="post" action="">
-                        <div class="field">
-                            <label class="label">Username</label>
-                            <p class="control has-icons-left has-icons-right">
-                                <input class="input" name="username" type="text" [value]="this.username() == false ? '' : this.username()" autocomplete="username" placeholder="e.g. xdgoldentiger" (input)="this.onUsernameInputChange($event)" required />
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-success" *ngIf="this.isUsernameValid() && this.username() !== null">
-                                    <i class="fas fa-check is-green"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-danger" *ngIf="!this.isUsernameValid()">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </span>
-                            </p>
-                            <p class="help is-danger" *ngIf="!this.isUsernameValid() && this.username() !== false">The username must be at least 5 characters</p>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <p class="control has-icons-left has-icons-right">
-                                <input class="input" name="email" type="email" autocomplete="email" placeholder="e.g. golden@fakedevelopers.com" (input)="this.onEmailInputChange($event)" required />
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-envelope"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-success" *ngIf="this.isEmailValid() && this.emailAddress() !== null">
-                                    <i class="fas fa-check is-green"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-danger" *ngIf="!this.isEmailValid()">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </span>
-                            </p>
-                            <p class="help is-danger" *ngIf="!this.isEmailValid() && this.emailAddress() !== false">The email is either invalid or already taken</p>
-                        </div>
-                  
-                        <div class="field">
-                            <label class="label">Password</label>
-                            <p class="control has-icons-left has-icons-right">
-                                <input class="input" name="password" type="password" autocomplete="new-password" placeholder="********" (input)="this.onPasswordInputChange($event)" required />
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-success" *ngIf="this.isPasswordLengthGood() && this.unhashedPassword() !== null">
-                                    <i class="fas fa-check is-green"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-danger" *ngIf="!this.isPasswordLengthGood()">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </span>
-                            </p>
-                            <p class="help is-danger" *ngIf="!this.isPasswordLengthGood() && this.unhashedPassword() !== false">Password must contain at least 5 characters</p>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Verify Password</label>
-                            <p class="control has-icons-left has-icons-right">
-                                <input class="input" name="v_password" type="password" autocomplete="off" placeholder="********" (input)="this.onVerifyPasswordInputChange($event)" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-success" *ngIf="this.isPasswordMatch() && this.unhashedPassword() !== null && this.unhashedVerifyPassword() !== ''">
-                                    <i class="fas fa-check is-green"></i>
-                                </span>
-                                <span class="icon is-small is-right has-text-danger" *ngIf="!this.isPasswordMatch() || this.unhashedPassword() == null || this.unhashedVerifyPassword() == ''">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </span>
-                            </p>
-                            <p class="help is-danger" *ngIf="!this.isPasswordMatch() && this.unhashedPassword() !== false && this.unhashedVerifyPassword() !== false">Password does not match</p>
-                        </div>
-                  
-                        <button class="button is-primary" [disabled]="!this.isUsernameValid() || !this.isEmailValid() || !this.isPasswordLengthGood() || !this.isPasswordMatch()">Create Account</button>
-                    </form>
-                </div>
+        <div class="container is-max-tablet">
+          <form class="box is-shadowless has-background-dark has-text-left" method="post" action="">
+            <div class="field">
+              <label class="label">Username</label>
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" name="username" type="text" [value]="this.username() == false ? '' : this.username()" autocomplete="username" placeholder="e.g. xdgoldentiger" (input)="this.onUsernameInputChange($event)" required />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+                @if (this.isUsernameValid() && this.username() !== null) {
+                  <span class="icon is-small is-right has-text-success">
+                    <i class="fas fa-check is-green"></i>
+                  </span>
+                }
+                @if (!this.isUsernameValid()) {
+                  <span class="icon is-small is-right has-text-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </span>
+                }
+              </p>
+              @if (!this.isUsernameValid() && this.username() !== false) {
+                <p class="help is-danger">The username must be at least 5 characters</p>
+              }
             </div>
+
+            <div class="field">
+              <label class="label">Email</label>
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" name="email" type="email" autocomplete="email" placeholder="e.g. golden@fakedevelopers.com" (input)="this.onEmailInputChange($event)" required />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                @if (this.isEmailValid() && this.emailAddress() !== null) {
+                  <span class="icon is-small is-right has-text-success">
+                    <i class="fas fa-check is-green"></i>
+                  </span>
+                }
+                @if (!this.isEmailValid()) {
+                  <span class="icon is-small is-right has-text-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </span>
+                }
+              </p>
+              @if (!this.isEmailValid() && this.emailAddress() !== false) {
+                <p class="help is-danger">The email is either invalid or already taken</p>
+              }
+            </div>
+
+            <div class="field">
+              <label class="label">Password</label>
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" name="password" type="password" autocomplete="new-password" placeholder="********" (input)="this.onPasswordInputChange($event)" required />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+                @if (this.isPasswordLengthGood() && this.unhashedPassword() !== null) {
+                  <span class="icon is-small is-right has-text-success">
+                    <i class="fas fa-check is-green"></i>
+                  </span>
+                }
+                @if (!this.isPasswordLengthGood()) {
+                  <span class="icon is-small is-right has-text-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </span>
+                }
+              </p>
+              @if (!this.isPasswordLengthGood() && this.unhashedPassword() !== false) {
+                <p class="help is-danger">Password must contain at least 5 characters</p>
+              }
+            </div>
+
+            <div class="field">
+              <label class="label">Verify Password</label>
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" name="v_password" type="password" autocomplete="off" placeholder="********" (input)="this.onVerifyPasswordInputChange($event)" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+                @if (this.isPasswordMatch() && this.unhashedPassword() !== null && this.unhashedVerifyPassword() !== '') {
+                  <span class="icon is-small is-right has-text-success">
+                    <i class="fas fa-check is-green"></i>
+                  </span>
+                }
+                @if (!this.isPasswordMatch() || this.unhashedPassword() == null || this.unhashedVerifyPassword() == '') {
+                  <span class="icon is-small is-right has-text-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </span>
+                }
+              </p>
+              @if (!this.isPasswordMatch() && this.unhashedPassword() !== false && this.unhashedVerifyPassword() !== false) {
+                <p class="help is-danger">Password does not match</p>
+              }
+            </div>
+
+            <button class="button is-primary" [disabled]="!this.isUsernameValid() || !this.isEmailValid() || !this.isPasswordLengthGood() || !this.isPasswordMatch()">Create Account</button>
+          </form>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>

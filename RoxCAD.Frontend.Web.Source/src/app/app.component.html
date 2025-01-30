@@ -1,21 +1,28 @@
-<section class="hero is-fullheight" *ngIf="!this.pageLoaded()">
-  <div class="hero-body">
-    <div class="is-flex container has-text-centered is-justify-content-center">
-      <p class="title"><span class="loader has-text-centered"></span></p>
+@if (!this.pageLoaded()) {
+  <section class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="is-flex container has-text-centered is-justify-content-center">
+        <p class="title"><span class="loader has-text-centered"></span></p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+}
 
-<section *ngIf="this.pageLoaded() && !this.webServerValid()" class="hero is-fullheight">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <p class="title mb-4">Error</p>
-      <p class="subtitle">
-        The RoxCAD Website must be run on the official RoxCAD Server due to the advanced technical nature of this system.<br />
-        If you need help setting up RoxCAD, Please read the <a href="https://docs.roxstarstudios.dev/" target="_blank">Docs</a>!
-      </p>
+@if (this.pageLoaded() && !this.webServerValid()) {
+  <section class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <p class="title mb-4">Error</p>
+        <p class="subtitle">
+          The RoxCAD Website must be run on the official RoxCAD Server due to the advanced technical nature of this system.<br />
+          If you need help setting up RoxCAD, Please read the <a href="https://docs.roxstarstudios.dev/" target="_blank">Docs</a>!
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+}
 
-<router-outlet *ngIf="this.pageLoaded() && this.webServerValid()" />
+@if (this.pageLoaded() && this.webServerValid()) {
+  <router-outlet />
+  <app-mdt-leave-modal />
+}

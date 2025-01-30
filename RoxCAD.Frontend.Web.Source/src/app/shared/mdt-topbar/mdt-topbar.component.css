@@ -1,0 +1,117 @@
+.mdt-topbar {
+    width: 100vw;
+    height: 70px;
+    overflow: hidden;
+    position: fixed;
+}
+
+.mdt-topbar-police {
+    background-color: var(--theme-police-sidebar-bg);
+}
+
+.mdt-topbar-fire {
+    background-color: var(--theme-fire-sidebar-bg);
+}
+
+.mdt-topbar-medical {
+    background-color: var(--theme-medical-sidebar-bg);
+}
+
+.mdt-topbar-left {
+    position: absolute;
+    padding-left: 5px;
+    width: 37%;
+    max-width: 37%;
+    min-width: 37%;
+    height: 100%;
+    outline: #082C56 solid 0px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-wrap-mode: nowrap;
+    margin: 0px;
+
+}
+
+.mdt-topbar-divlogo {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 65px;
+    margin-right: 15px;
+}
+
+.mdt-topbar-divname {
+    position: absolute;
+    top: 10px;
+    text-transform: uppercase;
+    text-wrap-mode: nowrap;
+    overflow: hidden;
+    width: 76%;
+    max-width: 76%;
+    min-width: 76%;
+    font-size: 19px;
+}
+
+.mdt-topbar-charname {
+    position: absolute;
+    bottom: 10px;
+    font-size: 17px;
+}
+
+.mdt-topbar-charunit {
+    position: absolute;
+    bottom: 3px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+.mdt-topbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    max-width: 25%;
+    min-width: 25%;
+    height: 100%;
+    outline: #082C56 solid 0px;
+    overflow: hidden;
+    margin: 0px;
+    align-content: center;
+    text-align: center;
+}
+
+.mdt-topbar-datetime {
+    font-size: 20px;
+    text-align: center;
+}
+
+.mdt-topbar-datetime {
+    margin-left: 5px;
+    text-align: center;
+}
+
+.mdt-topbar-right {
+    position: absolute;
+    right: 0px;
+    padding-right: 5px;
+    width: 37%;
+    max-width: 37%;
+    min-width: 37%;
+    height: 100%;
+    outline: #082C56 solid 0px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-wrap-mode: nowrap;
+    margin: 0px;
+    justify-items: end;
+    align-content: center;
+}
+
+.button {
+    background-color: #33333354 !important;
+    border-style: none !important;
+}
+
+.mdt-topbar-buttons {
+    vertical-align: middle;
+}

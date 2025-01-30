@@ -1,6 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
-@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+@import url("https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 html {
     overflow: auto !important;
+    background-color: var(--theme-global-bg);
+}
+
+body {
+    font-family: "Outfit", serif !important;
+    font-optical-sizing: auto;
+    font-style: normal;
 }

@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit, signal } from '@angular/core';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [NavbarComponent],
   templateUrl: './new.component.html',
   styleUrl: './new.component.css'
 })
@@ -13,11 +13,11 @@ export class NewComponent implements OnInit {
   constructor() {}
 
   isUsernameValid = signal(false);
-  username = signal("" as string || false);
+  username = signal("" as any);
   isEmailValid = signal(false);
-  emailAddress = signal("" as string || false);
-  unhashedPassword = signal("" as string || false);
-  unhashedVerifyPassword = signal("" as string || false);
+  emailAddress = signal("" as any);
+  unhashedPassword = signal("" as any);
+  unhashedVerifyPassword = signal("" as any);
   isPasswordMatch = signal(false);
   isPasswordLengthGood = signal(false);
 

@@ -1,0 +1,27 @@
+<div [ngClass]="{
+    'mdt-topbar': true,
+    'is-shadowless': true,
+    'mdt-topbar-police': currentMdtInfoObj.type == 'police',
+    'mdt-topbar-fire': currentMdtInfoObj.type == 'fire',
+    'mdt-topbar-medical': currentMdtInfoObj.type == 'medical'
+}">
+    <div class="mdt-topbar-left">
+        <img class="mdt-topbar-divlogo" src="./assets/images/divisions/{{currentMdtInfoObj.divAbbr}}.png" />
+        <span class="mdt-topbar-divname">{{currentMdtInfoObj.divName}}</span>
+        <span class="mdt-topbar-charname">{{currentMdtInfoObj.charCallsign}} &bull; {{currentMdtInfoObj.charName}} | On Duty</span>
+    </div>
+
+    <div class="mdt-topbar-center">
+        <span class="mdt-topbar-date mdt-topbar-datetime">{{dateTime.day}} &bull; {{dateTime.time}} &nbsp; (UTC)</span>
+    </div>
+
+    <div class="mdt-topbar-right">
+        <div class="mdt-topbar-buttons">
+            <button class="button is-medium" (click)="OnLeaveModalActivate()">
+                <span class="icon">
+                  <i class="fas fa-sign-out fa-md"></i>
+                </span>
+              </button>
+        </div>
+    </div>
+</div>

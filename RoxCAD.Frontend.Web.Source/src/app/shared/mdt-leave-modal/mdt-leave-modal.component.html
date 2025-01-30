@@ -1,0 +1,17 @@
+<div class="modal is-shadowless" [ngClass]="{
+    'is-active': modalActive == true
+}">
+    <div class="mdt-leave-modal-background modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head is-shadowless">
+        <p class="modal-card-title">Leave Menu</p>
+        <button class="delete" (click)="doNothing_HideModal()" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="buttons is-flex is-justify-content-space-between">
+            <button class="button is-align-self-stretch" (click)="goOffDuty_ChangeDivision_HideModal()">Go off duty and change division</button>
+            <button class="button is-align-self-stretch" (click)="goOffDuty_ReturnHome_HideModal()">Go off duty and return home</button>
+          </div>
+      </section>
+    </div>
+</div>
